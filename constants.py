@@ -1,6 +1,8 @@
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
 
+FRAMERATE = 60
+
 ASTEROID_MIN_RADIUS = 20
 ASTEROID_KINDS = 3
 ASTEROID_SPAWN_RATE = 0.8  # seconds
@@ -11,3 +13,4 @@ STARTUP_TEXT = (
         f"Screen width: {SCREEN_WIDTH}\n"
         f"Screen height: {SCREEN_HEIGHT}"
     )
+SHUTDOWN_TEXT = "Exiting Asteroids."
