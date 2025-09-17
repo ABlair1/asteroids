@@ -1,2 +1,6 @@
 # os
 .DS_Store
+
+# project
+.venv
+__pycache__
