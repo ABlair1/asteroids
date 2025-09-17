@@ -1,37 +1,49 @@
 import pygame
-import constants
+from constants import (
+    SCREEN_WIDTH,
+    SCREEN_HEIGHT,
+    FRAMERATE,
+    STARTUP_TEXT,
+    SHUTDOWN_TEXT,
+)
+from player import Player
 
 
-def get_screen() -> pygame.SurfaceType:
+def get_screen() -> pygame.Surface:
     screen = pygame.display.set_mode(
-        size=(constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT),
+        size=(SCREEN_WIDTH, SCREEN_HEIGHT),
     )
     return screen
 
-def game_loop(screen):
+def game_loop(screen: pygame.Surface) -> None:
     # start clock for tracking framerate
     clock = pygame.time.Clock()
     dt = 0
 
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+
     # begin game loop
     while True:
+        # check for player input or game events
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
             
+        # update display on screen
         screen.fill("black")
+        player.draw(screen)
         pygame.display.flip()
 
-        dt = clock.tick(constants.FRAMERATE) / 1000  # delta time in seconds
+        dt = clock.tick(FRAMERATE) / 1000  # delta time in seconds
 
 def main():
     pygame.init()
 
-    print(constants.STARTUP_TEXT)
+    print(STARTUP_TEXT)
 
     game_loop(get_screen())
 
-    print(constants.SHUTDOWN_TEXT)
+    print(SHUTDOWN_TEXT)
 
 
 if __name__ == "__main__":
