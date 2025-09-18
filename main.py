@@ -16,11 +16,15 @@ def get_screen() -> pygame.Surface:
     return screen
 
 def game_loop() -> None:
+    # game setup
     screen = get_screen()
-    # start clock for tracking framerate
     clock = pygame.time.Clock()
     dt = 0
 
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+
+    Player.containers = (updatable, drawable)
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
     # begin game loop
@@ -30,13 +34,15 @@ def game_loop() -> None:
             if event.type == pygame.QUIT:
                 return
             
-        # update display on screen
+        # update display and in-game objects 
         screen.fill("black")
-        player.update(dt)
-        player.draw(screen)
+        updatable.update(dt)
+        for sprite in drawable:
+            sprite.draw(screen)
         pygame.display.flip()
 
-        dt = clock.tick(FRAMERATE) / 1000  # delta time in seconds
+        # update delta time in seconds based on framerate
+        dt = clock.tick(FRAMERATE) / 1000
 
 def main():
     pygame.init()

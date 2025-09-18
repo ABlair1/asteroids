@@ -58,4 +58,3 @@ class Player(CircleShape):
         if keys[pygame.K_s] or keys[pygame.K_DOWN]:
             # 's' key and down arrow move Player backward
             self.move(-dt)
-
