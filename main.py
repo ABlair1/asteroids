@@ -15,7 +15,8 @@ def get_screen() -> pygame.Surface:
     )
     return screen
 
-def game_loop(screen: pygame.Surface) -> None:
+def game_loop() -> None:
+    screen = get_screen()
     # start clock for tracking framerate
     clock = pygame.time.Clock()
     dt = 0
@@ -31,6 +32,7 @@ def game_loop(screen: pygame.Surface) -> None:
             
         # update display on screen
         screen.fill("black")
+        player.update(dt)
         player.draw(screen)
         pygame.display.flip()
 
@@ -41,7 +43,7 @@ def main():
 
     print(STARTUP_TEXT)
 
-    game_loop(get_screen())
+    game_loop()
 
     print(SHUTDOWN_TEXT)
 
