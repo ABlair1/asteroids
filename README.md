@@ -10,3 +10,7 @@ The classic arcade game!
 - three options for asteroid speed
 - pause screen w/ player input while playing
 - player ship color options
+- persist options in local json file
+- option to reset all options to default
+- score points for destroying asteroids
+- persist high scores in local json file
