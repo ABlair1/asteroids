@@ -18,5 +18,5 @@ class CircleShape(pygame.sprite.Sprite):
         raise NotImplementedError
 
     def update(self, dt: int):
-        # TODO: override
-        pass
+        """Must override in subclass"""
+        raise NotImplementedError

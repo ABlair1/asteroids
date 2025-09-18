@@ -14,3 +14,5 @@ The classic arcade game!
 - option to reset all options to default
 - score points for destroying asteroids
 - persist high scores in local json file
+- option to adjust display size
+- player cannot move past the display edges
