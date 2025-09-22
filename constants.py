@@ -18,3 +18,4 @@ STARTUP_TEXT = (
         f"Screen height: {SCREEN_HEIGHT}"
     )
 SHUTDOWN_TEXT = "Exiting Asteroids."
+GAME_OVER_TEXT = "Game over!"

@@ -1,3 +1,4 @@
+import sys
 import pygame
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
@@ -7,6 +8,7 @@ from constants import (
     FRAMERATE,
     STARTUP_TEXT,
     SHUTDOWN_TEXT,
+    GAME_OVER_TEXT,
 )
 from player import Player
 
@@ -16,6 +18,11 @@ def get_screen() -> pygame.Surface:
         size=(SCREEN_WIDTH, SCREEN_HEIGHT),
     )
     return screen
+
+def game_over() -> None:
+    print(GAME_OVER_TEXT)
+    print(SHUTDOWN_TEXT)
+    sys.exit()
 
 def game_loop() -> None:
     # game setup
@@ -47,6 +54,11 @@ def game_loop() -> None:
         for sprite in drawable:
             sprite.draw(screen)
         pygame.display.flip()
+
+        # check for asteroid collisions with player
+        for asteroid in asteroids:
+            if player.has_collision(asteroid):
+                game_over()
 
         # update delta time in seconds based on framerate
         dt = clock.tick(FRAMERATE) / 1000
