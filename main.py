@@ -58,10 +58,13 @@ def game_loop() -> None:
             sprite.draw(screen)
         pygame.display.flip()
 
-        # check for asteroid collisions with player
+        # check for asteroid collisions
         for asteroid in asteroids:
             if player.has_collision(asteroid):
                 game_over()
+            for shot in shots:
+                if asteroid.has_collision(shot):
+                    asteroid.split()
 
         # update delta time in seconds based on framerate
         dt = clock.tick(FRAMERATE) / 1000
